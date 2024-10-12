@@ -40,15 +40,26 @@ body {
   margin-left: 10px;
 }
 
+/* Updated form-group to display checkbox and label in one line */
 .form-group {
   display: flex;
-  justify-content: space-between;
-  color: rgb(11, 11, 11);
+  flex-direction: row; /* Change direction to row to keep label and input on the same line */
+  align-items: center; /* Align items vertically in the center */
   margin-bottom: 15px;
+  color: rgb(16, 14, 14);
   font-weight: bold;
 }
 
-/* New button container styles */
+.form-group label {
+  margin-right: 10px; /* Add space between label and checkbox */
+  flex-grow: 1; /* Ensure label takes available space */
+}
+
+.form-group input[type="checkbox"] {
+  margin-left: 5px; /* Optional: Adjust spacing between checkbox and label */
+}
+
+/* Button container styles */
 .button-container {
   display: flex; /* Use flexbox for alignment */
   justify-content: space-between; /* Space buttons evenly */

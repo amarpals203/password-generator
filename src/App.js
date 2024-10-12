@@ -49,6 +49,7 @@ const App = () => {
       if (includeSymbols) {
         characterList += specialCharacters;
       }
+      // Generate a new password without clearing the manual password
       setPassword(createPassword(characterList));
       notify("Password is generated successfully", false);
     }
@@ -71,7 +72,7 @@ const App = () => {
   const notify = (message, hasError = false) => {
     if (hasError) {
       toast.error(message, {
-        position: "top-center",
+        position: "top-right", // Changed to top-right
         autoClose: 5000,
         hideProgressBar: false,
         closeOnClick: true,
@@ -81,7 +82,7 @@ const App = () => {
       });
     } else {
       toast(message, {
-        position: "top-center",
+        position: "top-right", // Changed to top-right
         autoClose: 5000,
         hideProgressBar: false,
         closeOnClick: true,
@@ -116,9 +117,9 @@ const App = () => {
     <div className="App">
       <div className="container">
         <div className="generator">
-          <h2 className="generator__header">Password Generator</h2>
+          <h2 className="generator__header">Password Generator 🔒</h2>
           <div className="generator__password">
-            <h3>{password || "Your generated password is here"}</h3>
+            <h3>{password || "Generated Password is here"}</h3>
             {/* Copy icon button */}
             <i
               onClick={handleCopyPassword}
@@ -143,6 +144,7 @@ const App = () => {
               className="pw"
             />
           </div>
+
           <div className="form-group">
             <label htmlFor="password-strength">Password length</label>
             <input
@@ -156,7 +158,9 @@ const App = () => {
               min="8"
             />
           </div>
-          <div className="form-group">
+
+          {/* Modified Checkbox Layout */}
+          <div className="form-group checkbox-row">
             <label htmlFor="uppercase-letters">Add Uppercase Letters</label>
             <input
               checked={includeUpperCase}
@@ -166,7 +170,7 @@ const App = () => {
               name="uppercase-letters"
             />
           </div>
-          <div className="form-group">
+          <div className="form-group checkbox-row">
             <label htmlFor="lowercase-letters">Add Lowercase Letters</label>
             <input
               checked={includeLowerCase}
@@ -176,7 +180,7 @@ const App = () => {
               name="lowercase-letters"
             />
           </div>
-          <div className="form-group">
+          <div className="form-group checkbox-row">
             <label htmlFor="include-numbers">Include Numbers</label>
             <input
               checked={includeNumbers}
@@ -186,7 +190,7 @@ const App = () => {
               name="include-numbers"
             />
           </div>
-          <div className="form-group">
+          <div className="form-group checkbox-row">
             <label htmlFor="include-symbols">Include Symbols</label>
             <input
               checked={includeSymbols}
@@ -196,6 +200,7 @@ const App = () => {
               name="include-symbols"
             />
           </div>
+
           <div className="button-container">
             <button onClick={handleGeneratePassword} className="generator__btn">
               Generate Password
@@ -204,8 +209,9 @@ const App = () => {
               Reset
             </button>
           </div>
+
           <ToastContainer
-            position="top-center"
+            position="top-right" // Changed to top-right
             autoClose={5000}
             hideProgressBar={false}
             newestOnTop={false}
