@@ -13,6 +13,7 @@ import "@fortawesome/fontawesome-free/css/all.min.css"; // Import Font Awesome
 
 const App = () => {
   const [password, setPassword] = useState("");
+  const [manualPassword, setManualPassword] = useState(""); // New state for manual password input
   const [passwordLength, setPasswordLength] = useState(15);
   const [includeUpperCase, setIncludeUpperCase] = useState(false);
   const [includeLowerCase, setIncludeLowerCase] = useState(false);
@@ -20,6 +21,13 @@ const App = () => {
   const [includeSymbols, setIncludeSymbols] = useState(false);
 
   const handleGeneratePassword = () => {
+    if (manualPassword) {
+      // If there is a manually typed password, set it directly
+      setPassword(manualPassword);
+      notify("Manual password set successfully", false);
+      return;
+    }
+
     if (
       !includeUpperCase &&
       !includeLowerCase &&
@@ -30,16 +38,16 @@ const App = () => {
     } else {
       let characterList = "";
       if (includeNumbers) {
-        characterList = characterList + numbers;
+        characterList += numbers;
       }
       if (includeUpperCase) {
-        characterList = characterList + upperCaseLetters;
+        characterList += upperCaseLetters;
       }
       if (includeLowerCase) {
-        characterList = characterList + lowerCaseLetters;
+        characterList += lowerCaseLetters;
       }
       if (includeSymbols) {
-        characterList = characterList + specialCharacters;
+        characterList += specialCharacters;
       }
       setPassword(createPassword(characterList));
       notify("Password is generated successfully", false);
@@ -51,7 +59,7 @@ const App = () => {
     const characterListLength = characterList.length;
     for (let i = 0; i < passwordLength; i++) {
       const characterIndex = Math.floor(Math.random() * characterListLength);
-      password = password + characterList.charAt(characterIndex);
+      password += characterList.charAt(characterIndex);
     }
     return password;
   };
@@ -95,6 +103,7 @@ const App = () => {
 
   const handleReset = () => {
     setPassword("");
+    setManualPassword(""); // Reset manual password input
     setPasswordLength(15);
     setIncludeUpperCase(false);
     setIncludeLowerCase(false);
@@ -121,6 +130,18 @@ const App = () => {
                 marginLeft: "10px",
               }}
             ></i>
+          </div>
+          {/* New Input for Manual Password */}
+          <div className="form-group">
+            <label htmlFor="manual-password">Manual Password</label>
+            <input
+              type="text"
+              id="manual-password"
+              value={manualPassword}
+              onChange={(e) => setManualPassword(e.target.value)}
+              placeholder="Type your password here"
+              className="pw"
+            />
           </div>
           <div className="form-group">
             <label htmlFor="password-strength">Password length</label>

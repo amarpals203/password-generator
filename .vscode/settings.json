@@ -4,6 +4,7 @@
         "fontawesome",
         "fortawesome",
         "stregth",
-        "toastify"
+        "toastify",
+        "TTFB"
     ]
 }

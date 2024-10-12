@@ -43,7 +43,7 @@ body {
 .form-group {
   display: flex;
   justify-content: space-between;
-  color: green;
+  color: rgb(11, 11, 11);
   margin-bottom: 15px;
   font-weight: bold;
 }
