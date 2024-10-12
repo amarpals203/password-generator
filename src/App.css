@@ -1,28 +1,30 @@
- body{
+body {
   background-color: rgb(9, 9, 9);
- }
-.App{
+}
+
+.App {
   min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.generator{
-  
+.generator {
   background-image: linear-gradient(-225deg, #20E2D7 0%, #F9FEA5 100%);
   border-radius: 10px;
   box-shadow: 0px 2px 10px rgba(245, 244, 244, 0.863);
   padding: 30px;
 }
-.generator__header{
+
+.generator__header {
   text-align: center;
   color: darkgreen;
   margin-bottom: 20px;
   animation: blink 2s infinite;
 }
-.generator__password{
-  background-color:#6385a5;
+
+.generator__password {
+  background-color: #6385a5;
   padding: 13px 10px;
   color: #fff;
   margin-bottom: 15px;
@@ -31,29 +33,64 @@
   justify-content: space-between;
   border-radius: 20px;
 }
-.copy__btn{
-  color: #fff;
-  background: #308D46;
-  border: none;
-  cursor: pointer;
-}
-.generator__btn{
-  background: #308D46;
-  border: none;
-  width: 100%;
-  margin-top: 10px;
-  padding: 10px;
-  color: #fff;
-  border-radius: 30px;
-  font-size: 17px;
-  cursor: pointer;
 
+.copy__icon {
+  cursor: pointer;
+  font-size: 24px;
+  margin-left: 10px;
 }
-.form-group{
+
+.form-group {
   display: flex;
   justify-content: space-between;
-  color: gre;
+  color: green;
   margin-bottom: 15px;
+  font-weight: bold;
+}
+
+/* New button container styles */
+.button-container {
+  display: flex; /* Use flexbox for alignment */
+  justify-content: space-between; /* Space buttons evenly */
+  align-items: center; /* Center items vertically */
+  margin-top: 10px; /* Add some space above the button container */
+}
+
+.generator__btn,
+.reset__btn {
+  flex: 1; /* Make buttons take equal space */
+  padding: 10px 15px;
+  cursor: pointer;
+  font-size: 16px;
+  border-radius: 5px; /* Rounded corners */
+  transition: background-color 0.3s; /* Smooth transition for hover effect */
+}
+
+.generator__btn {
+  background-color: #308d46; /* Primary color for the Generate button */
+  color: white;
+  border: none; /* Remove border */
+  margin-right: 10px; /* Spacing between buttons */
+}
+
+.reset__btn {
+  background-color: #f44336; /* Red color for the Reset button */
+  color: white;
+  border: none; /* Remove border */
+}
+
+/* Remove margin from the last button */
+.button-container button:last-child {
+  margin-right: 0; /* No margin on the last button */
+}
+
+/* Hover effects */
+.generator__btn:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+}
+
+.reset__btn:hover {
+  background-color: #d32f2f; /* Darker red on hover */
 }
 
 @keyframes blink {
